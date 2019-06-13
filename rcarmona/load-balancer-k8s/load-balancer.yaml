@@ -1,0 +1,36 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: load-balancer
+spec:
+  selector:
+    matchLabels:
+      component: load-balancer
+  template:
+    metadata:
+      labels:
+        component: load-balancer
+    spec:
+      containers:
+        - name: load-balancer
+          image: fjbarrena/random-champion:latest
+          ports:
+            - containerPort: 80
+              protocol: TCP
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: load-balancer
+  labels:
+    service: load-balancer
+spec:
+  type: NodePort
+  selector:
+    component: load-balancer
+  ports:
+    - port: 80
+      name: testport
+      targetPort: 80
