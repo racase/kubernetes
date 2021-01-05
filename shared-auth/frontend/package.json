@@ -17,7 +17,7 @@
         "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start"
     },
     "dependencies": {
-        "axios": "^0.18.0",
+        "axios": "^0.21.1",
         "bootstrap": "^3.3.7",
         "chartist": "^0.10.1",
         "v-click-outside": "0.0.8",
